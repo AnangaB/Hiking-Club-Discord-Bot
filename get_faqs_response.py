@@ -45,25 +45,12 @@ faq = {
             "Are there non-hike events?"
         ]
     },
-    "What if I have other questions?": {
-        "answer": "Feel free to ask your questions in the **#general** channel or DM one of our execs. We’re here to help!",
-        "related_questions": [
-            "Where can I ask other questions?",
-            "How do I contact an exec for more info?",
-            "What should I do if I have further questions?"
-        ]
-    },
     "Do you have other social media accounts?": {
         "answer": "Yes, we’re on Instagram! Follow us here: [@sfuhikers](https://www.instagram.com/sfuhikers/)",
         "related_questions": [
             "Where can I find your social media?",
             "Do you have Instagram?",
-            "Can I follow you on social media?"
-        ]
-    },
-    "Do you have an instagram?": {
-        "answer": "Yes, we’re on Instagram! Follow us here: [@sfuhikers](https://www.instagram.com/sfuhikers/)",
-        "related_questions": [
+            "Can I follow you on social media?",
             "Is your club on Instagram?",
             "Where can I follow you on Instagram?",
             "Y'all have Ig?",
