@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-
+#class for different slash commands that return different links
 class Links(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -16,6 +16,8 @@ class Links(commands.Cog):
     @discord.slash_command(description="Get link to our Instagram Account")
     async def instagram_link(self, ctx):
         await ctx.respond("SFU Hikers Instagram: https://www.instagram.com/sfuhikers")
+
+
 
 
 def setup(bot):
