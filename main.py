@@ -13,16 +13,15 @@ intents.message_content = True  # Ensure message content intent is explicitly en
 # Initialize the bot with intents
 bot = discord.Bot(intents=intents)
 
+#load the slash commands
 bot.load_extension("Cogs.links")
 bot.load_extension("Cogs.custom_text_for_bot")
-
 
 
 @bot.event
 async def on_message(message):
     print(f"Received message: '{message.content}' from {message.author}")
     
-
     # Ignore messages from bots
     if message.author.bot:
         return

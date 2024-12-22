@@ -66,14 +66,14 @@ def is_msg_a_faq(msg, threshold=80):
     # Loop through each FAQ question and related questions
     for question, data in faq.items():
         # Check if the main question matches
-        if fuzz.ratio(msg_lower, question.lower()) >= threshold:
+        if fuzz.partial_ratio(msg_lower, question.lower()) >= threshold:
             print(fuzz.partial_ratio(msg_lower, question.lower()))
             print(question)
             return data['answer']
 
         # Check if any related questions match
         for related_question in data['related_questions']:
-            if fuzz.ratio(msg_lower, related_question.lower()) >= threshold:
+            if fuzz.partial_ratio(msg_lower, related_question.lower()) >= threshold:
                 print(fuzz.partial_ratio(msg_lower, question.lower()))
                 print(related_question)
                 return data['answer']
