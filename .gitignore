@@ -4,5 +4,6 @@ venv/
 # Ignore Python bytecode files
 __pycache__/
 cogs/__pycache__
+Strava/__pycache__
 
 note.txt

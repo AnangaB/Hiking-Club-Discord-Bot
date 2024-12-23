@@ -10,7 +10,7 @@ class CustomBotText(commands.Cog):
     @discord.slash_command(description="Send a message as the bot.") 
     async def send_text(self, ctx, arg):
         # only allow one user to use this command
-        print("tsets:",ctx.author.id, os.getenv('OWNER_ID'))
+        #print("tsets:",ctx.author.id, os.getenv('OWNER_ID'))
         if str(ctx.author.id) != str(os.getenv('OWNER_ID')):
             await ctx.respond("You do not have permission to use this command.", ephemeral=True)
             return

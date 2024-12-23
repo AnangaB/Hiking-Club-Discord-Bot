@@ -14,13 +14,13 @@ intents.message_content = True  # Ensure message content intent is explicitly en
 bot = discord.Bot(intents=intents)
 
 #load the slash commands
-bot.load_extension("Cogs.links")
-bot.load_extension("Cogs.custom_text_for_bot")
+bot.load_extension("SlashCommands.links")
+bot.load_extension("SlashCommands.custom_text_for_bot")
 
 
 @bot.event
 async def on_message(message):
-    print(f"Received message: '{message.content}' from {message.author}")
+    #print(f"Received message: '{message.content}' from {message.author}")
     
     # Ignore messages from bots
     if message.author.bot:
@@ -29,7 +29,6 @@ async def on_message(message):
     msg = message.content
 
     faq_answer = is_msg_a_faq(msg)
-    print(faq_answer)
     if faq_answer is not None:
         await message.channel.send(faq_answer)
 
