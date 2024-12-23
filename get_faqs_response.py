@@ -60,7 +60,7 @@ faq = {
 }
 
 
-def is_msg_a_faq(msg, threshold_partial=85,threshold_whole=60 ):
+def is_msg_a_faq(msg, threshold_partial=80,threshold_whole=60 ):
     msg_lower = msg.lower()
 
     # Loop through each FAQ question and related questions
