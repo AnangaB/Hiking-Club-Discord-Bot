@@ -21,7 +21,7 @@ faq = {
         ]
     },
     "Where can I find information about upcoming hikes?": {
-        "answer": "Check out the **#events** channel! We post RSVP forms for each hike there. A few days before the hike, you'll might receive an invite with all the details about that hike and meeting place address, as long as hike capacity isn't full. Please just get a Happy Hikers role from here: https://discord.com/channels/944042280820539462/944105985230909480/1092242659415957555 to be notified, whenever we post a new hike.",
+        "answer": "Check out the #events channel! We post RSVP forms for each hike there. A few days before the hike, you'll might receive an invite with all the details about that hike and meeting place address, as long as hike capacity isn't full. Please just get a Happy Hikers role from here: https://discord.com/channels/944042280820539462/944105985230909480/1092242659415957555 to be notified, whenever we post a new hike.",
         "related_questions": [
             "How can I sign up for hikes?",
             "Where can I find RSVP forms for hikes?",
@@ -60,20 +60,20 @@ faq = {
 }
 
 
-def is_msg_a_faq(msg, threshold=80):
+def is_msg_a_faq(msg, threshold_partial=85,threshold_whole=60 ):
     msg_lower = msg.lower()
 
     # Loop through each FAQ question and related questions
     for question, data in faq.items():
         # Check if the main question matches
-        if fuzz.partial_ratio(msg_lower, question.lower()) >= threshold:
+        if fuzz.partial_ratio(msg_lower, question.lower()) >= threshold_partial and fuzz.ratio(msg_lower, question.lower()) >= threshold_whole:
             #print(fuzz.partial_ratio(msg_lower, question.lower()))
             #print(question)
             return data['answer']
 
         # Check if any related questions match
         for related_question in data['related_questions']:
-            if fuzz.partial_ratio(msg_lower, related_question.lower()) >= threshold:
+            if fuzz.partial_ratio(msg_lower, related_question.lower()) >= threshold_partial and fuzz.ratio(msg_lower, related_question.lower()) >= threshold_whole:
                 #print(fuzz.partial_ratio(msg_lower, question.lower()))
                 #print(related_question)
                 return data['answer']
