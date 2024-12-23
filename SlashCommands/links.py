@@ -36,7 +36,8 @@ class Links(commands.Cog):
         if last_10_hikes and len(last_10_hikes) > 0:
             embed=discord.Embed()
             for i,hike in enumerate(last_10_hikes,1):
-                embed.add_field(name=f"Hike {i}:", value=hike, inline=False)
+                if i <= 10:
+                    embed.add_field(name=f"Hike {i}:", value=hike, inline=False)
             await ctx.respond(embed=embed)
 
         else:
