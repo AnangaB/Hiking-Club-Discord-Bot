@@ -5,5 +5,6 @@ venv/
 __pycache__/
 cogs/__pycache__
 Strava/__pycache__
+AutomaticBotResponses\__pycache__
 
 note.txt

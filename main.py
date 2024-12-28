@@ -1,7 +1,9 @@
 import os
 import discord
 from dotenv import load_dotenv
-from get_faqs_response import is_msg_a_faq
+
+from AutomaticBotResponses.get_automatic_emoji_reactions import respond_with_emoji_automatically
+from AutomaticBotResponses.get_faqs_response import is_msg_a_faq
 
 # Load environment variables
 load_dotenv()
@@ -20,17 +22,18 @@ bot.load_extension("SlashCommands.custom_text_for_bot")
 
 @bot.event
 async def on_message(message):
-    #print(f"Received message: '{message.content}' from {message.author}")
     
     # Ignore messages from bots
     if message.author.bot:
         return
     
-    msg = message.content
+    msg = message.content.lower()
 
     faq_answer = is_msg_a_faq(msg)
     if faq_answer is not None:
         await message.channel.send(faq_answer)
+
+    await respond_with_emoji_automatically(bot, message)
 
 
 bot.run(os.getenv('TOKEN'))
