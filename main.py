@@ -18,7 +18,7 @@ bot = discord.Bot(intents=intents)
 #load the slash commands
 bot.load_extension("SlashCommands.links")
 bot.load_extension("SlashCommands.custom_text_for_bot")
-
+bot.load_extension("SlashCommands.hikes_data")
 
 @bot.event
 async def on_message(message):
