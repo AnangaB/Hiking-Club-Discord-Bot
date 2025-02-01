@@ -24,8 +24,11 @@ class Links(commands.Cog):
     async def get_last_hike(self,ctx):
         last_hike = get_most_recent_activity()
         if last_hike != None:
-            embed=discord.Embed()
-            embed.add_field(name="Last Hike done by the Hiking Club:", value=last_hike, inline=False)
+            embed=discord.Embed(title="The Last Hike done by the Hiking Club",description="View all our other hikes on our Strava by clicking [here](https://www.strava.com/athletes/144125375)",color=discord.Color.blurple())
+
+            embed.add_field(name="", value=last_hike, inline=False)
+            embed.set_author(name="SFU Hiking Club", icon_url="https://go.sfss.ca/clubs/622/logo")
+
             await ctx.respond(embed=embed)
         else:
             await ctx.respond('Error: Currently unable to get the last Hike. Please try again later.', ephemeral=True) 
@@ -34,10 +37,15 @@ class Links(commands.Cog):
     async def get_last_10_hikes(self,ctx):
         last_10_hikes = get_last_10_hikes()
         if last_10_hikes and len(last_10_hikes) > 0:
-            embed=discord.Embed()
+            embed=discord.Embed(title="The last 10 hikes done by the club",description="View the rest on our Strava by clicking [here](https://www.strava.com/athletes/144125375)",color=discord.Color.blurple())
+
+            
+            embed.set_author(name="SFU Hiking Club", icon_url="https://go.sfss.ca/clubs/622/logo")
+
             for i,hike in enumerate(last_10_hikes,1):
                 if i <= 10:
-                    embed.add_field(name=f"Hike {i}:", value=hike, inline=False)
+                    embed.add_field(name="", value=hike, inline=False)
+
             await ctx.respond(embed=embed)
 
         else:
