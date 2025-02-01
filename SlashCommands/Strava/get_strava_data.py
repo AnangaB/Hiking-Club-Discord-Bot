@@ -94,7 +94,7 @@ def get_last_n_hikes(n):
             "Authorization": f"Bearer {code}"
         }
         try:
-            data = {"perPage": n} 
+            data = {"per_page": n}
             hikes = requests.get(url,params=data,headers=headers)
 
             if hikes.status_code == 200:
