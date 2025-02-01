@@ -37,19 +37,32 @@ class Links(commands.Cog):
     async def get_last_10_hikes(self,ctx):
         last_10_hikes = get_last_n_hikes(10)
         if last_10_hikes and len(last_10_hikes) > 0:
-            embed=discord.Embed(title="The last 10 hikes done by the club",description="View the rest on our Strava by clicking [here](https://www.strava.com/athletes/144125375)",color=discord.Color.blurple())
-
-            
-            embed.set_author(name="SFU Hiking Club", icon_url="https://go.sfss.ca/clubs/622/logo")
-
-            for i,hike in enumerate(last_10_hikes,1):
-                if i <= 10:
-                    embed.add_field(name="", value=hike, inline=False)
-
+            embed = get_multi_hikes_embed(10,last_10_hikes)
             await ctx.respond(embed=embed)
-
         else:
             await ctx.respond('Error: Currently unable to get the last 10 Hikes. Please try again later.', ephemeral=True)
+        
+    @discord.slash_command(description="Get info for the last 5 hikes done by the hiking club")
+    async def get_last_5_hikes(self,ctx):
+        last_5_hikes = get_last_n_hikes(5)
+        if last_5_hikes and len(last_5_hikes) > 0:
+            embed = get_multi_hikes_embed(5,last_5_hikes)
+            await ctx.respond(embed=embed)
+        else:
+            await ctx.respond('Error: Currently unable to get the last 5 Hikes. Please try again later.', ephemeral=True)
 
 def setup(bot):
     bot.add_cog(Links(bot))
+
+
+def get_multi_hikes_embed(number_of_hikes, hike_data):
+    
+    embed=discord.Embed(title=f"The last {number_of_hikes} hikes done by the club",description="View the rest on our Strava by clicking [here](https://www.strava.com/athletes/144125375)",color=discord.Color.blurple())
+                
+    embed.set_author(name="SFU Hiking Club", icon_url="https://go.sfss.ca/clubs/622/logo")
+
+    for i,hike in enumerate(hike_data,1):
+        if i <= 10:
+            embed.add_field(name="", value=hike, inline=False)
+
+    return embed
