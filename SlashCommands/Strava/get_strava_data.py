@@ -83,18 +83,18 @@ def get_most_recent_activity():
     
     return None
     
-# returns a str about the last 10 most recent strava activity
+# returns a str about the last n most recent strava activity
 # SFU Hikers strava only has hikes, so no need to filter thru activities further
-def get_last_10_hikes():
+def get_last_n_hikes(n):
     code = get_authorization_code()
-    if  code != None:
+    if  code != None and isinstance(n, int) and n > 0:
         url = "https://www.strava.com/api/v3/athlete/activities"
 
         headers = {
             "Authorization": f"Bearer {code}"
         }
-        data = {"perPage":9} 
         try:
+            data = {"perPage": n} 
             hikes = requests.get(url,params=data,headers=headers)
 
             if hikes.status_code == 200:
@@ -109,7 +109,7 @@ def get_last_10_hikes():
                     return result_list
             
         except:
-            print("get_last_10_hikes(): Error getting data of last 10 hikes from strava.")
+            print("get_last_n_hikes(): Error getting data of last n hikes from strava.")
             return None
     return None
 

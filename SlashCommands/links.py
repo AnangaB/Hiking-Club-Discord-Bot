@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 
 
-from SlashCommands.Strava.get_strava_data import get_last_10_hikes, get_most_recent_activity
+from SlashCommands.Strava.get_strava_data import get_last_n_hikes, get_most_recent_activity
 
 #class for different slash commands that return different links
 class Links(commands.Cog):
@@ -35,7 +35,7 @@ class Links(commands.Cog):
     
     @discord.slash_command(description="Get info for the last 10 hikes done by the hiking club")
     async def get_last_10_hikes(self,ctx):
-        last_10_hikes = get_last_10_hikes()
+        last_10_hikes = get_last_n_hikes(10)
         if last_10_hikes and len(last_10_hikes) > 0:
             embed=discord.Embed(title="The last 10 hikes done by the club",description="View the rest on our Strava by clicking [here](https://www.strava.com/athletes/144125375)",color=discord.Color.blurple())
 
@@ -49,8 +49,7 @@ class Links(commands.Cog):
             await ctx.respond(embed=embed)
 
         else:
-            await ctx.respond('Error: Currently unable to get the last 10 Hikes. Please try again later.', ephemeral=True) 
-
+            await ctx.respond('Error: Currently unable to get the last 10 Hikes. Please try again later.', ephemeral=True)
 
 def setup(bot):
     bot.add_cog(Links(bot))

@@ -10,4 +10,4 @@ AutomaticBotResponses\__pycache__
 note.txt
 
 # ignore vscode folder
-.vscode/
+.vscode
