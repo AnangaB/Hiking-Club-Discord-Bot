@@ -3,7 +3,7 @@ from discord.ext import commands
 from SlashCommands.Strava.get_strava_data import get_last_n_hikes, get_most_recent_activity
 from constant import ICON_URL, STRAVA_PROFILE_LINK
 
-#class for different slash commands that return different links
+#class for different slash commands that uses strava api and returns info for the hikes the club has done
 class HikeData(commands.Cog):
     def __init__(self, bot):
         self.bot = bot

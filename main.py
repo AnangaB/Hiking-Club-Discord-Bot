@@ -19,6 +19,7 @@ bot = discord.Bot(intents=intents)
 bot.load_extension("SlashCommands.links")
 bot.load_extension("SlashCommands.custom_text_for_bot")
 bot.load_extension("SlashCommands.hikes_data")
+bot.load_extension("SlashCommands.sfu_live_webcam")
 
 @bot.event
 async def on_message(message):
